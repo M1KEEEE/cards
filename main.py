@@ -35,17 +35,36 @@ def make_deck(suits):
 		for value in range(6, 15):
 			card = {}
 			card["масть"] = suit
-			card["начение"] = value
+			card["значение"] = value
 			deck.append(card)
 	random.shuffle(deck)
 	return deck
 
 
+def split_deck(deck):
+	user_deck = deck[:18]
+	computer_deck = deck[18:]
+	return user_deck, computer_deck
+
+
+
 deck = make_deck(suits)
+user_deck = split_deck(deck)[0]
+computer_deck = split_deck(deck)[1]
 
-user_deck = deck[:18]
-computer_deck = deck[18:]
+"""
+начало игры
+"""
+desk = []
+desk.append(user_deck.pop())
+desk.append(computer_deck.pop())
 
-print(len(deck))
-print(len(user_deck))
-print(len(computer_deck))
+print("игрок выбросил", desk[0]["значение"])
+print("компьютер выбросил", desk[1]["значение"])
+
+if desk[0]["значение"] > desk[1]["значение"]:
+	print("игрок победил")
+elif desk[0]["значение"] < desk[1]["значение"]:
+	print("компьютер победил")
+else:
+	print("спор")
