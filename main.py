@@ -47,6 +47,14 @@ def split_deck(deck):
     computer_deck = deck[18:]
     return user_deck, computer_deck
 
+def new_game():
+	make_deck()
+	split_deck()
+	table = []
+
+	while table[0]["значение"] == table[1]["значение"]:
+		new_round(user_deck, computer_deck, table)
+
 
 deck = make_deck(suits)
 user_deck = split_deck(deck)[0]
